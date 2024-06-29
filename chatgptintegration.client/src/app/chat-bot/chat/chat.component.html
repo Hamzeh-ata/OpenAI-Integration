@@ -1,0 +1,139 @@
+<div class="container-fluid h-100">
+  <div class="row h-100">
+    <div class="col-2 aside-menu-col">
+      <div class="aside-menu">
+        <div class="logo">
+          <img src="../../../assets/imgs/open-ai.png">
+        </div>
+        <div class="new-chat d-flex justify-content-center">
+          <button>
+            <span class="icon"><i class="fas fa-plus"></i></span> New Chat
+          </button>
+        </div>
+        <div class="menu-items">
+          <div class="guide d-flex menu-item">
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+            <h3 class="menu-text">Guide & FAQ</h3>
+          </div>
+          <div class="search d-flex menu-item">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <h3 class="menu-text">Search</h3>
+          </div>
+          <div class="aside-border"></div>
+          <div class="search d-flex menu-item">
+            <img src="../../../assets/imgs/upgrade.png">
+            <h3 class="menu-text mt-1">Upgrade</h3>
+          </div>
+          <div class="search d-flex menu-item">
+            <i class="fa fa-cog" aria-hidden="true"></i>
+            <h3 class="menu-text">Settings</h3>
+          </div>
+          <div class="aside-border"></div>
+          <div class="d-flex menu-item">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#515851"
+              height="25px" width="30px" version="1.1" id="Capa_1" viewBox="0 0 384.971 384.971" xml:space="preserve">
+              <g>
+                <g id="Sign_Out">
+                  <path
+                    d="M180.455,360.91H24.061V24.061h156.394c6.641,0,12.03-5.39,12.03-12.03s-5.39-12.03-12.03-12.03H12.03    C5.39,0.001,0,5.39,0,12.031V372.94c0,6.641,5.39,12.03,12.03,12.03h168.424c6.641,0,12.03-5.39,12.03-12.03    C192.485,366.299,187.095,360.91,180.455,360.91z" />
+                  <path
+                    d="M381.481,184.088l-83.009-84.2c-4.704-4.752-12.319-4.74-17.011,0c-4.704,4.74-4.704,12.439,0,17.179l62.558,63.46H96.279    c-6.641,0-12.03,5.438-12.03,12.151c0,6.713,5.39,12.151,12.03,12.151h247.74l-62.558,63.46c-4.704,4.752-4.704,12.439,0,17.179    c4.704,4.752,12.319,4.752,17.011,0l82.997-84.2C386.113,196.588,386.161,188.756,381.481,184.088z" />
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+              </g>
+            </svg>
+            <h3 class="menu-text">LogOut</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-10 d-flex flex-column chat-container">
+      <div class="row h-100 overflow-auto">
+        <div class="col-12">
+          <div class="h-100" *ngIf="messages.length != 0">
+            <div *ngFor="let message of messages" class="row mt-2"
+              [ngClass]="{'sent-message-row': message.sender !== 'gpt', 'received-message-row': message.sender === 'gpt'}">
+              <div class="col-12 d-flex align-items-center"
+                [ngClass]="{'justify-content-end': message.sender !== 'gpt'}">
+                <div class="user-img" *ngIf="message.sender ==='gpt'">
+                  <img src="../../../assets/imgs/ChatGPT-Logo-PNG.png" alt="">
+                </div>
+                <div class="text-container" [ngClass]="{'gpt-response': message.sender === 'gpt'}">
+                  <div class="message-text" [ngClass]="{'user-message': message.sender !== 'gpt'}"
+                    [innerHTML]="message.sanitizedText">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div *ngIf="messages.length == 0" class="presentation d-grid">
+            <div class="presentation-item d-flex">
+              <div class="open-ai-logo">
+                <img src="../../../assets/imgs/ChatGPT-Logo-PNG.png">
+              </div>
+              <div class="presentation-text">
+                <h3>Personalisation</h3>
+                <p>
+                  Personalization by AI involves tailoring experiences and recommendations based on
+                  individual preferences and behaviors.
+                </p>
+              </div>
+            </div>
+            <div class="presentation-item d-flex">
+              <div class="open-ai-logo">
+                <img src="../../../assets/imgs/ChatGPT-Logo-PNG.png">
+              </div>
+              <div class="presentation-text">
+                <h3>User testing</h3>
+                <p>
+                  User testing with AI involves gathering feedback and insights from real users to
+                  refine and improve products or services.
+                </p>
+              </div>
+            </div>
+            <div class="presentation-item d-flex">
+              <div class="open-ai-logo">
+                <img src="../../../assets/imgs/ChatGPT-Logo-PNG.png">
+              </div>
+              <div class="presentation-text">
+                <h3>Content creation</h3>
+                <p>
+                  AI-powered content creation leverages algorithms to generate relevant and engaging
+                  text, images, or videos based on specified criteria or data.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="isTyping">
+        <div class="col-12">
+          <div class="isTyping">
+            <h3>Chat gpt is typing</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="send-message d-flex justify-content-center">
+            <input class="message-input" placeholder="Send message" #messageInput
+              (keyup.enter)="sendMessage(messageInput.value)">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

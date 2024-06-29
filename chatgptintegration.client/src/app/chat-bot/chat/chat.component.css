@@ -1,0 +1,232 @@
+html,
+body,
+.container-fluid,
+.col {
+  height: 100%;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.chat-container {
+  background-color: #252628;
+  min-height: 100vh;
+}
+
+.aside-menu {
+  background-color: black;
+  min-height: 100vh;
+}
+
+h2 {
+  color: white;
+}
+
+.aside-menu-col {
+  padding: 0;
+  margin: 0;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.sent-message-row {
+  padding: 10px;
+}
+
+.user-img {
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  margin: 10px;
+  overflow: hidden;
+}
+
+.user-img img {
+  border: 1px solid #3c3c3c;
+  border-radius: 50%;
+  padding: 7px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+img {
+  width: 100%;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: bold;
+  color: white;
+}
+
+.message-text {
+  color: white;
+  font-size: 14px;
+}
+
+.user-message {
+  background-color: #2f2f2f;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.message-input {
+  background-color: black;
+  padding: 12px;
+  border-radius: 5px;
+  width: 80%;
+  outline: none;
+  border-color: black;
+  margin: 10px;
+  color: white;
+}
+
+.send-message {
+  border-top: 1px solid #484747;
+}
+
+.logo {
+  width: 100%;
+}
+
+.logo img {
+  width: 200px;
+}
+
+.new-chat button {
+  background-color: #0a7e31;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.new-chat button .icon {
+  margin-right: 8px;
+}
+
+.guide img {
+  width: 30px;
+}
+
+.menu-items {
+  margin-top: 70px;
+}
+
+.menu-item {
+  padding: 10px 20px;
+  margin-top: 15px;
+}
+
+.fa-question-circle {
+  color: #4f81ca;
+  font-size: 25px;
+}
+
+.menu-text {
+  font-size: 15px;
+  color: white;
+  margin-left: 10px;
+}
+
+.aside-border {
+  border: 1px solid #2f2f2f;
+  margin-top: 20px;
+}
+
+.search img {
+  width: 30px;
+}
+
+.fa-search {
+  color: #57da8a;
+  font-size: 25px;
+}
+
+.fa-cog {
+  color: #4f3cc9;
+  font-size: 25px;
+}
+
+.fa-sign-in {
+  color: gray;
+  font-size: 30px;
+}
+
+.open-ai-logo {
+  background-color: #2f2f2f;
+  border-radius: 50%;
+  padding: 30px;
+}
+
+.open-ai-logo img {
+  width: 60px;
+}
+
+.presentation {
+  margin-top: 70px;
+  place-content: center;
+}
+
+.presentation-item {
+  margin-top: 40px;
+}
+
+.presentation-text h3 {
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  margin: 15px;
+}
+
+.presentation-text p {
+  color: gray;
+  font-weight: bold;
+  font-size: 14px;
+  margin: 15px;
+}
+
+.isTyping {
+  margin-left: 170px;
+}
+
+.isTyping h3 {
+  color: gray;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.gpt-response {
+  width: 80%;
+}
