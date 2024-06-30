@@ -1,23 +1,26 @@
-﻿using chatGptIntegration.Server.Configurations;
-using chatGptIntegration.Server.Models;
+﻿using chatGptIntegration.Server.Models;
 using Microsoft.Extensions.Options;
+using OpenAI_API;
 using OpenAI_API.Chat;
 using OpenAI_API.Completions;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace chatGptIntegration.Server.Services.ChatGpt
 {
     public class ChatService : IOpenAiService
     {
-        private readonly OpenAiConfig _openAiConfig;
-        public ChatService(IOptionsMonitor<OpenAiConfig> optionsMonitor)
+        private readonly string _openAiApiKey;
+        public ChatService()
         {
-            _openAiConfig = optionsMonitor.CurrentValue;
+            _openAiApiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
         }
+
         public async Task<string> AskChatGptAsync(string question)
         {
             string result = "";
 
-            var api = new OpenAI_API.OpenAIAPI(_openAiConfig.Key);
+            var api = new OpenAIAPI(_openAiApiKey);
 
             CompletionRequest completionRequest = new CompletionRequest();
             completionRequest.Prompt = question;
@@ -36,7 +39,7 @@ namespace chatGptIntegration.Server.Services.ChatGpt
         public async Task<string> GetChatCompletionAsync(List<Message> messages)
         {
             var openAIMessages = new List<ChatMessage>();
-            var api = new OpenAI_API.OpenAIAPI(_openAiConfig.Key);
+            var api = new OpenAIAPI(_openAiApiKey);
             foreach (var message in messages)
             {
                 var role = ChatMessageRole.FromString(message.role);
